@@ -60,6 +60,7 @@
 | 10                    | World Cup                       | 100    | Delaunay to find relevant contour lines & LP to maximize profit under constraints                                 |
 | 10                    | Asterix in switzerland          | ---    | "" |
 | 10                    | Asterix and the chariot race    | ---    | "" |
+| 10                    | Chariot Race (poss upper)       | 100    | recursion and memoization, passing information if current node is covered by parent                               |
 | 10                    | New York                        | 100    | DFS over all trees, for every node discovered update node m hops above                                            |
 | PotW 11               | Fleetrace                       | 100    | minimum cost bipartite matching                                                                                   |
 | 11                    | Return of the Jedi              | 100    | finding 2nd most optimal spanning tree using Prim & DFS                                                           |
@@ -84,7 +85,6 @@
 | --------------------- | ------------------------------- | ------ | ----------------------------------------------------------------------------------------------------------------- |
 | PotW 3 (2018)         | Magician and the Coin           | 100    | recursion & memoization                                                                                           |
 | old 3                     | Almost antenna                  | 100    | Min_circle, support points                                                                                        |
-| PotW 4 (2019)         | Chariot Race                    | 100    | recursion and memoization, passing information if current node is covered by parent                               |
 | old 4                     | Building a Graph                | 100    | Kurskal, Dijkstra                                                                                                 |
 | old 4                     | Shortest Paths                  | 100    | Dijkstra                                                                                                          |
 | old 5                     | Ligth at the Museum             | 100    | split & list, brute force all switch configurations                                                               |
@@ -103,15 +103,12 @@
 | 10                    | New Tiles                       | ---    | Cancer to implement                                                                                               |
 | 10                    | Light the Stage                 | 100    | Delaunay for nearest neighbour & trying out all possible collisions                                               |
 | 10                    | Poker Chips                     | 100    | recursion with insane 5D memoization table                                                                        |
-| 10 (2019)             | Defensive Line                  | 100    | sliding window & DP                                                                                               |
 | 11                    | The Empire Strikes Back         | 100    | Delaunay for finding max radius per shot, then LP for solving for required energy                                 |
 | 11                    | Planks                          | 100    | Split & List with to bits per plank                                                                               |
 | 11 (2019)             | DHL                             | 100    | DP making use of the nature of the cost function                                                                  |
 | 12                    | Ligh Pattern                    | 100    | DP with linear table and two numbers per entry for normal and inverted lights                                     |
-| 12 (2019)             | Magician and the Coin           | 100    | recursion & memoization                                                                                           |
 | 12 (2019)             | Asterix and the Roman Lines     | 100    | LP                                                                                                                |
 | 13                    | Bob's Burden                    | 100    | Dijkstra for finding shortest path between 3 vertices & modelling node weight with in- and out-nodes              |
 | 13                    | Corbusier                       | 100    | simple DP with 2D table                                                                                           |
 | 13                    | Cantonal Courier                | 100    | max flow                                                                                                          |
-| 13                    | Moving Books                    | 100    | greedy, in every round everyone picks the heaviest box he can                                                     |
 | 13 (2019)             | Phantom Menace                  | 100    | max flow for finding maximal vertex-disjoint paths                                                                |
