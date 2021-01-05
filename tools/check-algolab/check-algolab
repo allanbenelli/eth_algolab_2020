@@ -1,0 +1,90 @@
+#!/usr/bin/env bash
+# Usage ./check-algolab <executable> <base-dir>
+
+set -e
+set -o pipefail
+
+usage() {
+    echo "Usage ./check-algolab <executable> [<base-dir>]"
+}
+
+if [ $# -eq 0 ]; then
+    echo "Please specify the path to the executable."
+    usage
+    exit;
+fi
+
+executable=$(realpath "$1")
+base_dir=$(realpath ".")
+
+if [ -n "$2" ]; then
+    base_dir="$2"
+fi
+
+
+cd "$base_dir"
+data_dir="$base_dir/public"
+out_dir="$base_dir/out"
+
+echo "Checking $(basename "${base_dir}")..."
+
+finish() {
+    if [ -n "$time_file" ]; then
+        rm "$time_file"
+    fi
+}
+trap finish EXIT
+
+if [ -d "$out_dir" ]; then
+    find "$out_dir" \( -name "*.stdout" -o -name "*.stderr" \) -exec rm {} \+
+else
+    mkdir "$out_dir"
+fi
+
+filesChecked=0
+filesPassed=0
+total_time=0
+
+time_file="$(mktemp)"
+while read -r f; do
+    name="$(basename "$f" | cut -f 1 -d '.')"
+    echo -n "" > "$time_file"
+
+    solution_file="$data_dir/$name.out"
+
+    if [ -s "$solution_file" ]; then
+        stdout="$out_dir/$name.stdout"
+        stderr="$out_dir/$name.stderr"
+
+        /usr/bin/time -q -p -f "%S %U " -o "$time_file" "$executable" > "$stdout" 2> "$stderr" < "$f" || true
+
+        filesChecked=$((filesChecked+1))
+
+        kernel="$(awk '{ print $1 }' < "$time_file")"
+        user="$(awk '{ print $2 }' < "$time_file")"
+
+        total="$(echo "$kernel + $user" | bc -l)"
+        total_time="$(echo "$total + $total_time" | bc -l)"
+
+        if diff -q "$stdout" "$solution_file" &>/dev/null; then
+            echo -e "\e[1;32mPassed $name in $total seconds.\e[0m"
+            filesPassed=$((filesPassed+1))
+        else
+            echo -e "\e[31m$name did not pass in $total seconds.\e[0m"
+            echo "====== STDERR START ====="
+            cat "$stderr"
+            echo "====== STDERR END ====="
+        fi
+    fi
+
+done <<< "$(find "$data_dir" -type f -name "*.in" | sort)"
+
+if [ $filesPassed -eq $filesChecked ]; then
+    echo -en "\e[1;32m"
+else
+    echo -en "\e[31m"
+fi
+
+echo -n "Passed $filesPassed out of $filesChecked tests in $total_time seconds"
+
+echo -e "\e[0m"

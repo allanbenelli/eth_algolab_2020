@@ -1,0 +1,16 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/bari/polybox/studium/master/algolab/algolab2020-my/problems/week2/deck_of_cards/src/main.cpp
+iostream
+-
+vector
+-
+algorithm
+-
+

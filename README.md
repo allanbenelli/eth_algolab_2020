@@ -22,62 +22,62 @@
 | 2                     | Search Snippets                 | 100    | ordering words by occurences, sliding window                                                                      |
 | 2                     | The Great Game                  | 100    | recursion & memoization, 2 tables                                                                                 |
 | PotW 3                | From Russia with Love           | 100    | recursion & memoization                                                                                           |
-| 3                     | Hit                             | 100    | intersection                                                                                                      |
-| 3                     | First hit                       | 100    | intersection, shuffle input and clip ray to avoid costly intersections                                            |
-| 3                     | Hiking Maps                     | 100    | inclusion test & sliding window                                                                                   |
-| 3                     | Antenna                         | 100    | Min_circle                                                                                                        |
-| PotW 4                | Defensive Line                  | 100    | sliding window & DP                                                                                               |
-| 4                     | Ant Challenge                   | 100    | Kruskal per species, then Dijkstra                                                                                |
-| 4                     | Buddy Selection                 | 100    | perfect matching                                                                                                  |
-| 4                     | First steps with BGL            | 100    |                                                                                                                   |
-| 4                     | Important Bridges BGL           | 100    | biconnected components                                                                                            |
-| PotW 5                | Motorcycles                     | 100    | sorting by increasing slope and then linear pass to test for intersections                                        |
-| 5                     | Boats                           | 100    | greedy, version of earliest deadline first                                                                        |
-| 5                     | Attack of the Clones            | 100    | greedy, earliest deadline first in a circle                                                                       |
-| 5                     | San Francisco                   | 100    | binary search over recursive function to find smallest k to achieve x points                                      |
-| 5                     | Asterix and the tour of Gaul    | 100    | min cost max flow                                                                                                 |
-| PotW 6                | Tracking                        | 100    |                                                                                                                   |
-| 6                     | Shopping Trip                   | 100    | max flow, adding edges between junctions in both directions                                                       |
-| 6                     | Kingdom Defence                 | 100    | max flow with edge demand (min capacity)                                                                          |
-| 6                     | Tiles                           | 100    | |
+| 3                     | Hit                             | ---    | intersection                                                                                                      |
+| 3                     | First hit                       | ---    | intersection, shuffle input and clip ray to avoid costly intersections                                            |
+| 3                     | Hiking Maps                     | ---    | inclusion test & sliding window                                                                                   |
+| 3                     | Antenna                         | ---    | Min_circle                                                                                                        |
+| PotW 4                | Defensive Line                  | ---    | sliding window & DP                                                                                               |
+| 4                     | Ant Challenge                   | ---    | Kruskal per species, then Dijkstra                                                                                |
+| 4                     | Buddy Selection                 | ---    | perfect matching                                                                                                  |
+| 4                     | First steps with BGL            | ---    |                                                                                                                   |
+| 4                     | Important Bridges BGL           | ---    | biconnected components                                                                                            |
+| PotW 5                | Motorcycles                     | ---    | sorting by increasing slope and then linear pass to test for intersections                                        |
+| 5                     | Boats                           | ---    | greedy, version of earliest deadline first                                                                        |
+| 5                     | Attack of the Clones            | ---    | greedy, earliest deadline first in a circle                                                                       |
+| 5                     | San Francisco                   | ---    | binary search over recursive function to find smallest k to achieve x points                                      |
+| 5                     | Asterix and the tour of Gaul    | ---    | min cost max flow                                                                                                 |
+| PotW 6                | Tracking                        | ---    |                                                                                                                   |
+| 6                     | Shopping Trip                   | ---    | max flow, adding edges between junctions in both directions                                                       |
+| 6                     | Kingdom Defence                 | ---    | max flow with edge demand (min capacity)                                                                          |
+| 6                     | Tiles                           | ---    | |
 | 6                     | Knights                         | 100    | Maxflow |
-| PotW 7                | Octopussy                       | 100    | greedy with recursive dependency resolution                                                                       |
-| 7                     | What is the Maximum             | 100    | quadratic programming                                                                                             |
-| 7                     | Diet                            | 100    | linear programming                                                                                                |
-| 7                     | Portfolios                      | 100    | quadratic programming, minimize over variance matrix                                                              |
-| 7                     | Radiation                       | 100    | LP, for every d try to find coefficiants for a 3D-polynomial of degree d that solves the constraints              |
-| PotW 8                | Surveillance Photographs        | 100    | max flow on graph with two layers                                                                                 |
-| 8                     | Bistro                          | 100    | voronoi using Delaunay triangulation                                                                              |
-| 8                     | H1N1                            | 100    | Delaunay/voronoi duality and precomputing largest escape path                                                     |
-| 8                     | Germs                           | 100    | Delaunay for nearest neighbour graph                                                                              |
+| PotW 7                | Octopussy                       | ---    | greedy with recursive dependency resolution                                                                       |
+| 7                     | What is the Maximum             | ---    | quadratic programming                                                                                             |
+| 7                     | Diet                            | ---    | linear programming                                                                                                |
+| 7                     | Portfolios                      | ---    | quadratic programming, minimize over variance matrix                                                              |
+| 7                     | Radiation                       | ---    | LP, for every d try to find coefficiants for a 3D-polynomial of degree d that solves the constraints              |
+| PotW 8                | Surveillance Photographs        | ---    | max flow on graph with two layers                                                                                 |
+| 8                     | Bistro                          | ---    | voronoi using Delaunay triangulation                                                                              |
+| 8                     | H1N1                            | ---    | Delaunay/voronoi duality and precomputing largest escape path                                                     |
+| 8                     | Germs                           | ---    | Delaunay for nearest neighbour graph                                                                              |
 | 8                     | Clues                           | 100    | computing graph 2-coloring and connected components simultaneously using Delaunay triangulation|
-| PotW 9                | Legions                         | 100    |                                                                                                                   |
-| 9                     | Algocoon                        | 100    | max flow / min cut with multiple min cuts                                                                         |
-| 9                     | Real Estate Market              | 100    | min cost matching                                                                                                 |
-| 9                     | Placing Knigths                 | 100    | - |
-| 9                     | Casino Royale                   | 100    | min cost max flow, space-time graph (see Carsharing)                                                              |
-| PotW 10               | Idefix                          | 100    |                                                                                                                   |
-| 10                    | World Cup                       | 100    | Delaunay to find relevant contour lines & LP to maximize profit under constraints                                 |
+| PotW 9                | Legions                         | ---    |                                                                                                                   |
+| 9                     | Algocoon                        | ---    | max flow / min cut with multiple min cuts                                                                         |
+| 9                     | Real Estate Market              | ---    | min cost matching                                                                                                 |
+| 9                     | Placing Knigths                 | ---    | - |
+| 9                     | Casino Royale                   | ---    | min cost max flow, space-time graph (see Carsharing)                                                              |
+| PotW 10               | Idefix                          | ---    |                                                                                                                   |
+| 10                    | World Cup                       | ---    | Delaunay to find relevant contour lines & LP to maximize profit under constraints                                 |
 | 10                    | Asterix in switzerland          | ---    | "" |
 | 10                    | Asterix and the chariot race    | ---    | "" |
-| 10                    | Chariot Race (poss upper)       | 100    | recursion and memoization, passing information if current node is covered by parent                               |
-| 10                    | New York                        | 100    | DFS over all trees, for every node discovered update node m hops above                                            |
-| PotW 11               | Fleetrace                       | 100    | minimum cost bipartite matching                                                                                   |
-| 11                    | Return of the Jedi              | 100    | finding 2nd most optimal spanning tree using Prim & DFS                                                           |
-| 11                    | Lestrase                        |    ---    | ""                                                        |
+| 10                    | Chariot Race (poss upper)       | ---    | recursion and memoization, passing information if current node is covered by parent                               |
+| 10                    | New York                        | ---    | DFS over all trees, for every node discovered update node m hops above                                            |
+| PotW 11               | Fleetrace                       | ---    | minimum cost bipartite matching                                                                                   |
+| 11                    | Return of the Jedi              | ---    | finding 2nd most optimal spanning tree using Prim & DFS                                                           |
+| 11                    | Lestrase                        | ---    | ""                                                        |
 | 11                    | Hand                            | ---    | ""                                                        |
 | 11                    | Fighting Pits of Meereen        | ---    | ""                                                        |
-| PotW 12               | The Iron Islands                | 100    |                                                                                                                   |
-| 12                    | India                           | 100    | min cost max flow, binary search on number of suitcases to find maximum that still respects budget (see Marathon) |
-| 12                    | Hong Kong                       | 100    | Delaunay/voronoi duality and precomputing max clearance for every triangle (see H1N1)                             |
-| 12                    | Carsharing                      | 100    | min cost max flow with a space-time graph and clever edge weights                                                 |
-| 12                    | Moving Books                    | 100    | greedy, in every round everyone picks the heaviest box he can                                                     |
-| PotW 13               | Testex Lannister                | 100    |                                                                                                                   |
-| 13                    | Revenge of the Sith             | 100    | Delaunay and union find to find the largest suitable set of connected planets                                     |
-| 13                    | Evolution                       | 100    | binary search on each interval found by DFS                                                                       |
-| 13                    | Punch                           | 100    | dynamic programming, 2D table for beverages x liters                                                              |
-| 13                    | Marathon                        | 100    | multiple max flow min cost & binary search to find the optimal flow                                               |
-| PotW 14               | On Her Majesty's Secret Service | 100    | minimum bottleneck matching, minimizing longest edge in bipartite graph                                           |
+| PotW 12               | The Iron Islands                | ---    |                                                                                                                   |
+| 12                    | India                           | ---    | min cost max flow, binary search on number of suitcases to find maximum that still respects budget (see Marathon) |
+| 12                    | Hong Kong                       | ---    | Delaunay/voronoi duality and precomputing max clearance for every triangle (see H1N1)                             |
+| 12                    | Carsharing                      | ---    | min cost max flow with a space-time graph and clever edge weights                                                 |
+| 12                    | Moving Books                    | ---    | greedy, in every round everyone picks the heaviest box he can                                                     |
+| PotW 13               | Testex Lannister                | ---    |                                                                                                                   |
+| 13                    | Revenge of the Sith             | ---    | Delaunay and union find to find the largest suitable set of connected planets                                     |
+| 13                    | Evolution                       | ---    | binary search on each interval found by DFS                                                                       |
+| 13                    | Punch                           | ---    | dynamic programming, 2D table for beverages x liters                                                              |
+| 13                    | Marathon                        | ---    | multiple max flow min cost & binary search to find the optimal flow                                               |
+| PotW 14               | On Her Majesty's Secret Service | ---    | minimum bottleneck matching, minimizing longest edge in bipartite graph                                           |
 
 # older solutions
 
