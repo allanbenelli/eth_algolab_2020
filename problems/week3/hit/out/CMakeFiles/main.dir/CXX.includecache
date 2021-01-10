@@ -1,0 +1,14 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/bari/polybox/studium/master/algolab/algolab2020-my/problems/week3/hit/src/main.cpp
+iostream
+-
+CGAL/Exact_predicates_inexact_constructions_kernel.h
+-
+
