@@ -1,0 +1,20 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/bari/polybox/studium/master/algolab/algolab2020-my/problems/week4/first_steps_with_bgl/src/main.cpp
+boost/graph/kruskal_min_spanning_tree.hpp
+-
+boost/graph/adjacency_list.hpp
+-
+vector
+-
+iostream
+-
+boost/graph/dijkstra_shortest_paths.hpp
+-
+

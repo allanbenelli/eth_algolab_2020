@@ -17,19 +17,19 @@
 | 1                     | Even Pairs                      | 100    | Partial sums, binomial coefficient                                                                                | |
 | 1                     | Even Matrices                   | 100    | dimension reduction & partial sums                                                                                | |
 | PotW 2                | Deck of Cards                   | 100    | sliding window                                                                                                    | |
-| 2                     | Beach Bars                      | 100    | partial sums, sliding window                                                                                      | |
+| 2                     | Beach Bars                      | 100    | partial sums, sliding window                                                                                      | DP |
 | 2                     | Burning Coins                   | 100    | DP, 2 tables                                                                                                      | |
 | 2                     | Search Snippets                 | 100    | ordering words by occurences, sliding window                                                                      | |
-| 2                     | The Great Game                  | 100    | recursion & memoization, 2 tables                                                                                 | |
-| PotW 3                | From Russia with Love           | 100    | recursion & memoization                                                                                           | |
-| 3                     | Hit                             | 100    | intersection                                                                                                      | |
-| 3                     | First hit                       | 100    | intersection, shuffle input and clip ray to avoid costly intersections                                            | |
-| 3                     | Hiking Maps                     | 100    | orientation test & sliding window (similar to search snippets)                                                    | |
-| 3                     | Antenna                         | 100    | Min_circle, with two different kernels                                                                            | |
-| PotW 4                | Defensive Line                  | ---    | sliding window & DP                                                                                               | |
-| 4                     | Ant Challenge                   | ---    | Kruskal per species, then Dijkstra                                                                                | |
+| 2                     | The Great Game                  | 100    | recursion & memoization, 2 tables                                                                                 | DP |
+| PotW 3                | From Russia with Love           | 100    | recursion & memoization                                                                                           | DP |
+| 3                     | Hit                             | 100    | intersection                                                                                                      | CGAL |
+| 3                     | First hit                       | 100    | intersection, shuffle input and clip ray to avoid costly intersections                                            | CGAL |
+| 3                     | Hiking Maps                     | 100    | orientation test & sliding window (similar to search snippets)                                                    | CGAL |
+| 3                     | Antenna                         | 100    | Min_circle, with two different kernels                                                                            | CGAL |
+| PotW 4                | Defensive Line                  | 100    | sliding window & DP                                                                                               | DP |
+| 4                     | Ant Challenge                   | 100    | Kruskal per species, then Dijkstra                                                                                | Boost |
 | 4                     | Buddy Selection                 | ---    | perfect matching                                                                                                  | |
-| 4                     | First steps with BGL            | ---    |                                                                                                                   | |
+| 4                     | First steps with BGL            | 100    | Kruskal & Dijkstra                                                                                                | Boost |
 | 4                     | Important Bridges BGL           | ---    | biconnected components                                                                                            | |
 | PotW 5                | Motorcycles                     | ---    | sorting by increasing slope and then linear pass to test for intersections                                        | |
 | 5                     | Boats                           | ---    | greedy, version of earliest deadline first                                                                        | |
@@ -75,7 +75,7 @@
 | PotW 13               | Testex Lannister                | ---    |                                                                                                                   | |
 | 13                    | Revenge of the Sith             | ---    | Delaunay and union find to find the largest suitable set of connected planets                                     | |
 | 13                    | Evolution                       | ---    | binary search on each interval found by DFS                                                                       | |
-| 13                    | Punch                           | ---    | dynamic programming, 2D table for beverages x liters                                                              | |
+| 13                    | Punch                           | 100    | dynamic programming, 2D table with pairs,                                                                         | DP |
 | 13                    | Marathon                        | ---    | multiple max flow min cost & binary search to find the optimal flow                                               | |
 | PotW 14               | On Her Majesty's Secret Service | ---    | minimum bottleneck matching, minimizing longest edge in bipartite graph                                           | |
 
