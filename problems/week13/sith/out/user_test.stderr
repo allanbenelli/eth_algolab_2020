@@ -1,2 +1,1 @@
 /usr/include/CGAL/Compact_container.h:1046:50: runtime error: reference binding to null pointer of type 'struct Triangulation_face_base_2'
-/usr/include/CGAL/Compact_container.h:1046:50: runtime error: reference binding to null pointer of type 'struct Triangulation_face_base_2'

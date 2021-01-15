@@ -1,0 +1,24 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/bari/polybox/studium/master/algolab/algolab2020-my/problems/week4/important_bridges/src/main.cpp
+boost/config.hpp
+-
+vector
+-
+list
+-
+boost/graph/biconnected_components.hpp
+-
+boost/graph/adjacency_list.hpp
+-
+iterator
+-
+iostream
+-
+

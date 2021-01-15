@@ -28,10 +28,10 @@
 | 3                     | Antenna                         | 100    | Min_circle, with two different kernels                                                                            | CGAL |
 | PotW 4                | Defensive Line                  | 100    | sliding window & DP                                                                                               | DP |
 | 4                     | Ant Challenge                   | 100    | Kruskal per species, then Dijkstra                                                                                | Boost |
-| 4                     | Buddy Selection                 | ---    | perfect matching                                                                                                  | |
+| 4                     | Buddy Selection                 | 100    | perfect matching                                                                                                  | Boost |
 | 4                     | First steps with BGL            | 100    | Kruskal & Dijkstra                                                                                                | Boost |
-| 4                     | Important Bridges BGL           | ---    | biconnected components                                                                                            | |
-| PotW 5                | Motorcycles                     | ---    | sorting by increasing slope and then linear pass to test for intersections                                        | |
+| 4                     | Important Bridges BGL           | 100    | biconnected components, count edges per component                                                                 | Boost |
+| PotW 5                | Motorcycles                     | 100    | sorting by increasing slope and then linear pass to test for intersections                                        | |
 | 5                     | Boats                           | ---    | greedy, version of earliest deadline first                                                                        | |
 | 5                     | Attack of the Clones            | ---    | greedy, earliest deadline first in a circle                                                                       | |
 | 5                     | San Francisco                   | ---    | binary search over recursive function to find smallest k to achieve x points                                      | |
@@ -59,8 +59,7 @@
 | PotW 10               | Idefix                          | ---    |                                                                                                                   | |
 | 10                    | World Cup                       | ---    | Delaunay to find relevant contour lines & LP to maximize profit under constraints                                 | |
 | 10                    | Asterix in switzerland          | ---    | "" | |
-| 10                    | Asterix and the chariot race    | ---    | "" | |
-| 10                    | Chariot Race (poss upper)       | ---    | recursion and memoization, passing information if current node is covered by parent                               | |
+| 10                    | Chariot Race (                  | 100    | recursion and memoization, passing information if current node is covered by parent                               | |
 | 10                    | New York                        | ---    | DFS over all trees, for every node discovered update node m hops above                                            | |
 | PotW 11               | Fleetrace                       | ---    | minimum cost bipartite matching                                                                                   | |
 | 11                    | Return of the Jedi              | ---    | finding 2nd most optimal spanning tree using Prim & DFS                                                           | |
