@@ -44,8 +44,8 @@
 | PotW 7                | Octopussy                       | ---    | greedy with recursive dependency resolution                                                                       | |
 | 7                     | What is the Maximum             | ---    | linear programming intro, with changing max. function to minimizeing opposite                                     | LP |
 | 7                     | Diet                            | 100    | linear programming                                                                                                | LP |
-| 7                     | Portfolios                      | ---    | quadratic programming, minimize over variance matrix                                                              | |
 | 7                     | Radiation                       | ---    | LP, for every d try to find coefficiants for a 3D-polynomial of degree d that solves the constraints              | |
+| 7                     | Inball                          | 100    | linear programming, find closest point to every halfspace border and check                                        |
 | PotW 8                | Surveillance Photographs        | ---    | max flow on graph with two layers                                                                                 | |
 | 8                     | Bistro                          | ---    | voronoi using Delaunay triangulation                                                                              | |
 | 8                     | H1N1                            | ---    | Delaunay/voronoi duality and precomputing largest escape path                                                     | | |
@@ -93,7 +93,7 @@
 | old 6                     | Coin Tossing                    | 100    | max flow, making sure claimed scores and flow match number of games                                               |
 | old 6                     | Tetris                          | 100    | max flow with splitting nodes into in- and out-nodes (vertex capacity)                                            |
 | old 6 (2019)              | London                          | 100    | max flow, edges between front/back letter combinations                                                            |
-| old 7                 | Inball                          | 100    | linear programming, find closest point to every halfspace border and check                                        |
+| 7                     | Portfolios                      | ---    | quadratic programming, minimize over variance matrix                                                              | |
 | PotW 8 (2019)         | Cantonal Courier                | 100    | max flow                                                                                                          |
 | old 8                     | Graypes                         | 100    | Delaunay triangulation, taking shortest edge                                                                      |
 | PotW 9 (2018 & 2019)  | Suez                            | 100    | find constraints/objective and solve with LP                                                                      |
