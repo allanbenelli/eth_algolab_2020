@@ -31,19 +31,19 @@
 | 4                     | Buddy Selection                 | 100    | perfect matching                                                                                                  | Boost |
 | 4                     | First steps with BGL            | 100    | Kruskal & Dijkstra                                                                                                | Boost |
 | 4                     | Important Bridges BGL           | 100    | biconnected components, count edges per component                                                                 | Boost |
-| PotW 5                | Motorcycles                     | 100    | sorting by increasing slope and then linear pass to test for intersections                                        | |
-| 5                     | Boats                           | ---    | greedy, version of earliest deadline first                                                                        | |
+| PotW 5                | Motorcycles                     | 100    | sorting by increasing slope and then linear pass to test for intersections                                        | CTAL |
+| 5                     | Boats                           | 100    | greedy, version of earliest deadline first                                                                        | Greedy |
 | 5                     | Attack of the Clones            | ---    | greedy, earliest deadline first in a circle                                                                       | |
-| 5                     | San Francisco                   | ---    | binary search over recursive function to find smallest k to achieve x points                                      | |
-| 5                     | Asterix and the tour of Gaul    | ---    | min cost max flow                                                                                                 | |
+| 5                     | San Francisco                   | 100    | binary search over recursive function to find smallest k to achieve x points                                      | |
+| 5                     | Asterix and the tour of Gaul    | ---    |                                                                                                  | |
 | PotW 6                | Tracking                        | ---    |                                                                                                                   | |
-| 6                     | Shopping Trip                   | ---    | max flow, adding edges between junctions in both directions                                                       | |
-| 6                     | Kingdom Defence                 | ---    | max flow with edge demand (min capacity)                                                                          | |
-| 6                     | Tiles                           | ---    | | |
-| 6                     | Knights                         | 100    | Maxflow | |
+| 6                     | Shopping Trip                   | 100    | max flow, adding edges between junctions in both directions, and a weight map for cap to sink                     | BGL - Maxflow |
+| 6                     | Kingdom Defence                 | 100    | max flow with edge demand (min capacity)                                                                          | BGL - Maxflow |
+| 6                     | Tiles                           | 100    | max flow matrix with odd even, edges between even and odd neighbors | BGL - Maxflow |
+| 6                     | Knights                         | 100    | Maxflow | BGL - Maxflow |
 | PotW 7                | Octopussy                       | ---    | greedy with recursive dependency resolution                                                                       | |
-| 7                     | What is the Maximum             | ---    | quadratic programming                                                                                             | |
-| 7                     | Diet                            | ---    | linear programming                                                                                                | |
+| 7                     | What is the Maximum             | ---    | linear programming intro, with changing max. function to minimizeing opposite                                     | LP |
+| 7                     | Diet                            | 100    | linear programming                                                                                                | LP |
 | 7                     | Portfolios                      | ---    | quadratic programming, minimize over variance matrix                                                              | |
 | 7                     | Radiation                       | ---    | LP, for every d try to find coefficiants for a 3D-polynomial of degree d that solves the constraints              | |
 | PotW 8                | Surveillance Photographs        | ---    | max flow on graph with two layers                                                                                 | |

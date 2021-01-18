@@ -1,0 +1,18 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/bari/polybox/studium/master/algolab/algolab2020-my/problems/week6/tiles/src/main.cpp
+iostream
+-
+vector
+-
+boost/graph/adjacency_list.hpp
+-
+boost/graph/push_relabel_max_flow.hpp
+-
+
