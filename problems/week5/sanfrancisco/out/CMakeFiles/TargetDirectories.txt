@@ -1,5 +1,0 @@
-/home/bari/polybox/studium/master/algolab/algolab2020-my/problems/week5/sanfrancisco/out/CMakeFiles/edit_cache.dir
-/home/bari/polybox/studium/master/algolab/algolab2020-my/problems/week5/sanfrancisco/out/CMakeFiles/rebuild_cache.dir
-/home/bari/polybox/studium/master/algolab/algolab2020-my/problems/week5/sanfrancisco/out/CMakeFiles/cgal_check_build_system.dir
-/home/bari/polybox/studium/master/algolab/algolab2020-my/problems/week5/sanfrancisco/out/CMakeFiles/ALL_CGAL_TARGETS.dir
-/home/bari/polybox/studium/master/algolab/algolab2020-my/problems/week5/sanfrancisco/out/CMakeFiles/main.dir
