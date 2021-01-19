@@ -36,18 +36,18 @@
 | 5                     | Attack of the Clones            | ---    | greedy, earliest deadline first in a circle                                                                       | |
 | 5                     | San Francisco                   | 100    | binary search over recursive function to find smallest k to achieve x points                                      | |
 | 5                     | Asterix and the tour of Gaul    | ---    |                                                                                                  | |
-| PotW 6                | Tracking                        | ---    |                                                                                                                   | |
+| PotW 6                | Tracking                        | 100    | Shortest Path - make multiple layers to force dijkstra to use a path segment                                      | BGL - Dijkstra |
 | 6                     | Shopping Trip                   | 100    | max flow, adding edges between junctions in both directions, and a weight map for cap to sink                     | BGL - Maxflow |
 | 6                     | Kingdom Defence                 | 100    | max flow with edge demand (min capacity)                                                                          | BGL - Maxflow |
 | 6                     | Tiles                           | 100    | max flow matrix with odd even, edges between even and odd neighbors | BGL - Maxflow |
 | 6                     | Knights                         | 100    | Maxflow | BGL - Maxflow |
-| PotW 7                | Octopussy                       | ---    | greedy with recursive dependency resolution                                                                       | |
-| 7                     | What is the Maximum             | ---    | linear programming intro, with changing max. function to minimizeing opposite                                     | LP |
+| PotW 7                | Octopussy                       | 100    | greedy, order by finish time, and use recursive function for childs                                               | Greedy |
+| 7                     | What is the Maximum             | 100    | linear programming intro, with changing max. function to minimizeing opposite                                     | LP |
 | 7                     | Diet                            | 100    | linear programming                                                                                                | LP |
-| 7                     | Radiation                       | ---    | LP, for every d try to find coefficiants for a 3D-polynomial of degree d that solves the constraints              | |
-| 7                     | Inball                          | 100    | linear programming, find closest point to every halfspace border and check                                        |
-| PotW 8                | Surveillance Photographs        | ---    | max flow on graph with two layers                                                                                 | |
-| 8                     | Bistro                          | ---    | voronoi using Delaunay triangulation                                                                              | |
+| 7                     | Radiation                       | 100    | LP, similar to slides                                                                                             | LP |
+| 7                     | Inball                          | 100    | LP, calculate norm as further point / radius, take the negative as objective -> maximize                          | LP |
+| PotW 8                | Surveillance Photographs        | 100    | max flow on graph with two layers (photo connect to lower layer)                                                  | BGL - Maxflow |
+| 8                     | Bistro                          | 100    | voronoi using Delaunay triangulation                                                                              | CGAL - Voronoi |
 | 8                     | H1N1                            | ---    | Delaunay/voronoi duality and precomputing largest escape path                                                     | | |
 | 8                     | Germs                           | ---    | Delaunay for nearest neighbour graph                                                                              | |
 | 8                     | Clues                           | 100    | computing graph 2-coloring and connected components simultaneously using Delaunay triangulation                   | |
