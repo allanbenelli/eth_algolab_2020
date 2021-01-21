@@ -48,14 +48,14 @@
 | 7                     | Inball                          | 100    | LP, calculate norm as further point / radius, take the negative as objective -> maximize                          | LP |
 | PotW 8                | Surveillance Photographs        | 100    | max flow on graph with two layers (photo connect to lower layer)                                                  | BGL - Maxflow |
 | 8                     | Bistro                          | 100    | voronoi using Delaunay triangulation                                                                              | CGAL - Voronoi |
-| 8                     | H1N1                            | ---    | Delaunay/voronoi duality and precomputing largest escape path                                                     | | |
-| 8                     | Germs                           | ---    | Delaunay for nearest neighbour graph                                                                              | |
-| 8                     | Clues                           | 100    | computing graph 2-coloring and connected components simultaneously using Delaunay triangulation                   | |
+| 8                     | H1N1                            | 100    | Delaunay/voronoi duality and precomputing largest escape path                                                     | CGAL - Voronoi |
+| 8                     | Germs                           | 100    | Delaunay for nearest neighbour graph                                                                              | CGAL - Voronoi |
+| 8                     | Clues                           | 100    | computing graph 2-coloring and connected components simultaneously using Delaunay triangulation                   | CGAL - |
 | PotW 9                | Legions                         | ---    |                                                                                                                   | |
-| 9                     | Algocoon                        | ---    | max flow / min cut with multiple min cuts                                                                         | |
-| 9                     | Real Estate Market              | ---    | min cost matching                                                                                                 | |
-| 9                     | Placing Knigths                 | ---    | - | |
-| 9                     | Casino Royale                   | ---    | min cost max flow, space-time graph (see Carsharing)                                                              | |
+| 9                     | Algocoon                        | 100    | simpel maxflow, iterate over all possible i, i+1 maxflows, take min                                               | BGL - Maxflow |
+| 9                     | Real Estate Market              | 100    | max flow (invert cost by maxbid - bid per edge)                                                                   | BGL - Maxflow |
+| 9                     | Placing Knigths                 | 100    | max matching of non-conflicting -> Invert to max possible - matching conflicting                                  | BGL - Matching |
+| 9                     | Casino Royale                   | 100    | min cost max flow, space-time graph (see Carsharing)                                                              | BGL - Maxflow |
 | PotW 10               | Idefix                          | ---    |                                                                                                                   | |
 | 10                    | World Cup                       | ---    | Delaunay to find relevant contour lines & LP to maximize profit under constraints                                 | |
 | 10                    | Asterix in switzerland          | ---    | "" | |
@@ -72,8 +72,8 @@
 | 12                    | Carsharing                      | ---    | min cost max flow with a space-time graph and clever edge weights                                                 | |
 | 12                    | Moving Books                    | ---    | greedy, in every round everyone picks the heaviest box he can                                                     | |
 | PotW 13               | Testex Lannister                | ---    |                                                                                                                   | |
-| 13                    | Revenge of the Sith             | ---    | Delaunay and union find to find the largest suitable set of connected planets                                     | |
-| 13                    | Evolution                       | ---    | binary search on each interval found by DFS                                                                       | |
+| 13                    | Revenge of the Sith             | 100    | Delaunay and union find to find the largest suitable set of connected planets                                     | CGAL - Delaunay |
+| 13                    | Evolution                       | 100    | binary search on each interval found by DFS                                                                       | |
 | 13                    | Punch                           | 100    | dynamic programming, 2D table with pairs,                                                                         | DP |
 | 13                    | Marathon                        | ---    | multiple max flow min cost & binary search to find the optimal flow                                               | |
 | PotW 14               | On Her Majesty's Secret Service | ---    | minimum bottleneck matching, minimizing longest edge in bipartite graph                                           | |

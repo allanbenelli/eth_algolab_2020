@@ -18,22 +18,24 @@ void run(int n){
         P pos; cin >> pos;
         locs.push_back(pos); // point of bacteria
     }
-    Triangulation trang;
-    trang.insert(locs.begin(), locs.end());
+    Triangulation trang(locs.begin(), locs.end());
     vector<double> dist; dist.reserve(n);
-    for(Vertex_iterator v = trang.finite_vertices_begin(); v!=trang.finite_vertices_end(); ++v){
+    for(auto v = trang.finite_vertices_begin(); v!=trang.finite_vertices_end(); ++v){
         const int x = v->point().x();
         const int y = v->point().y();
-        Triangulation::Vertex_circulator c = v->incident_vertices();
+        auto c = v->incident_vertices();
         double closest_squared = numeric_limits<double>::max();
         if(c!=0){
             do{
-                closest_squared = min(closest_squared, CGAL::to_double(CGAL::squared_distance(c->point(), v->point())));
+                if(!trang.is_infinite(c)){
+                double dist_this = CGAL::squared_distance(c->point(), v->point());
+                closest_squared = min(closest_squared, dist_this);
+                }
             } while (++c != v->incident_vertices());
         }
 
-        double boundary_distance = min({abs(x-l),abs(r-x),abs(y-b), abs(t-y)});
-        dist.push_back(min(boundary_distance-0.5, (sqrt(closest_squared)-1)/2));
+        double boundary_distance = min({abs(l-x),abs(r-x),abs(b-y), abs(t-y)});
+        dist.push_back(min(boundary_distance-0.5, (sqrt(max(closest_squared,1.0))-1)/2));
     }
 
     sort(dist.begin(), dist.end());
@@ -45,6 +47,7 @@ int main(){
     //cout << fixed << setprecision(0);
     int n; cin >> n;
     while(n!=0){
-        cin >> n;
+        run(n);
+        cin >> n; 
     }
 }
