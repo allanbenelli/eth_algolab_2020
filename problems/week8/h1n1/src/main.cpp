@@ -1,80 +1,82 @@
 #include <iostream>
 #include <vector>
-#include <climits>
 #include <queue>
-
-// CGAL includes
+#include <climits>
 #include <CGAL/Exact_predicates_inexact_constructions_kernel.h>
-#include <CGAL/Triangulation_face_base_with_info_2.h>
 #include <CGAL/Delaunay_triangulation_2.h>
+#include <CGAL/Triangulation_vertex_base_2.h>
+#include <CGAL/Triangulation_face_base_with_info_2.h>
 
 typedef CGAL::Exact_predicates_inexact_constructions_kernel K;
-typedef CGAL::Triangulation_vertex_base_2<K> Vb;
-typedef CGAL::Triangulation_face_base_with_info_2<K::FT, K> Fb;
-typedef CGAL::Triangulation_data_structure_2<Vb, Fb> Tds;
-typedef CGAL::Delaunay_triangulation_2<K, Tds> Triangulation;
+// we want to store an index with each vertex
+typedef CGAL::Triangulation_vertex_base_2<K>   Vb;
+typedef CGAL::Triangulation_face_base_with_info_2<K::FT, K>    Fb;
+typedef CGAL::Triangulation_data_structure_2<Vb,Fb>            Tds;
+typedef CGAL::Delaunay_triangulation_2<K,Tds>                  Delaunay;
 typedef K::Point_2 P;
+typedef Delaunay::Face_handle Face;
 
-void compute(Triangulation &t){
-    std::priority_queue<std::pair<K::FT, Triangulation::Face_handle>> queue;
-    for (auto it = t.all_faces_begin(); it != t.all_faces_end(); ++it){
-        if (t.is_infinite(it)){
-            it->info() = INT64_MAX;
-            queue.push({INT64_MAX, it});
-        } else {
+using namespace std;
+
+void compute(Delaunay &t){
+    priority_queue<pair<K::FT, Face>> q;
+    for(Face it = t.all_faces_begin(); it != t.all_faces_end(); ++it){
+        it->info() = INT64_MAX;
+        K::FT dist = INT64_MAX;
+        if(!t.is_infinite(it)){
+            dist = 0;
             it->info() = -1;
-            queue.push({0, it});
         }
+        q.push({dist, it});
     }
-    while (!queue.empty()){
-        Triangulation::Face_handle curr_f = queue.top().second;
-        K::FT escape_val = queue.top().first;
-        queue.pop();
-
-        if (escape_val < curr_f->info())  continue; // already handled
-        for (int i = 0; i < 3; i++){
-            Triangulation::Face_handle nb = curr_f->neighbor(i);
-            K::FT new_dist = t.segment(curr_f, i).squared_length();
-            K::FT new_val = std::min(curr_f->info(), new_dist);
-            if (nb->info() < new_val){
-                queue.push({new_val, nb});
-                nb->info() = new_val;
+    while(!q.empty()){
+        K::FT curr_d = q.top().first;
+        Face curr_f = q.top().second;
+        q.pop();
+        if(curr_d < curr_f->info()) continue;
+        for(int i = 0; i < 3; ++i){
+            Face ng = curr_f->neighbor(i);
+            K::FT new_d = t.segment(curr_f, i).squared_length();
+            new_d =  min(new_d, curr_f->info());
+            if(ng->info()<new_d){
+                ng->info() = new_d;
+                q.push({new_d, ng});
             }
         }
     }
 }
 
 void run(int n){
-    std::vector<P> infected; infected.reserve(n);
-    for (int i = 0; i < n; ++i){
-        int x, y; std::cin >> x >> y;
-        infected.push_back(P(x, y));
+    vector<P> infected; infected.reserve(n);
+    for(int i = 0; i < n; ++i){
+        int x, y; cin >> x >> y;
+        infected.push_back(P(x,y));
     }
-    Triangulation t;
+    Delaunay t;
     t.insert(infected.begin(), infected.end());
-    int m;std::cin >> m;
     compute(t);
-
-    for (int i = 0; i < m; i++){
-        P pos; std::cin >> pos;
-        long d_in; std::cin >> d_in;
-        K::FT d = d_in;
-
-        P nearest = t.nearest_vertex(pos)->point();
-        if (CGAL::squared_distance(pos, nearest) < d){ //early exit
-            std::cout << "n"; continue;
+    int m; cin >> m;
+    for(int i = 0; i<m; ++i){
+        int x,y; long d; cin >> x >> y >> d;
+        K::FT D = d;
+        P pos(x,y);
+        P neareast_v = t.nearest_vertex(pos)->point();
+        if(CGAL::squared_distance(pos, neareast_v) < D){
+            cout << "n"; continue;
         }
-        Triangulation::Face_handle fh = t.locate(pos);
-        if (4 * d <= fh->info()) std::cout << "y";
-        else std::cout << "n";
-    }
-    std::cout << "\n";
+        Face nearest_f = t.locate(pos);
+        if(nearest_f->info() < 4*D){
+            cout << "n";
+        } else cout << "y";
+    } 
+    cout << "\n";
 }
 
 int main(){
-    std::ios_base::sync_with_stdio(false);
-    int n; std::cin >> n;
-    while (n!=0){
-        run(n); std::cin >> n;
+    ios_base::sync_with_stdio(false);
+    int t; cin >> t;
+    while(t!=0){
+        run(t);
+        cin >> t;
     }
 }

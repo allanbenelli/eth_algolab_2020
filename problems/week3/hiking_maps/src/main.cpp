@@ -18,64 +18,55 @@ bool contains(const Pts& t, const P& point){
 }
 
 void testrun(){
-    int m, n;
-    cin >> m >> n;
-    Pts path;
-    path.reserve(m);
-    for(int i = 0; i < m; i++){
-        P point;
-        cin >> point;
+    int m, n; cin >> m >> n;
+    Pts path; path.reserve(m);
+    for(int i = 0; i < m; ++i){
+        P point; cin >> point;
         path.push_back(point);
     }
-    Trs triangles(n); // for saving which triangle covers which path segment
-    for(int i = 0; i < n; i++){
+    vector<vector<int>> triangles(n);
+    for(int i = 0; i < n; ++i){
         Pts t;
-        for(int j = 0; j < 6; j++){
-            P po; cin >> po;
-            t.push_back(po);
+        for(int j = 0; j < 6; ++j){
+            P tr; cin >> tr;
+            t.push_back(tr);
         }
-        for(int j = 0; j<6; j+=2){
-            if(CGAL::right_turn(t[j], t[j+1], t[(j+2)%6])){ // check that they are right
+        for(int j = 0; j < 6; j+=2){
+            if(CGAL::right_turn(t[j], t[j+1], t[(j+2)%6])){
                 swap(t[j], t[j+1]);
             }
         }
-        //check which segments are covered by triangle
-
-        bool previous = contains(t, path[0]); // first point
-        for(int j = 1; j < m; j++){
+        bool previous = contains(t, path[0]);
+        for(int j = 1; j < m; ++j){
             if(contains(t, path[j])){
                 if(previous){
-                    triangles[i].push_back(j-1); // covers segment i -> i+1
-                } else {
-                    previous = true;
-                }
+                    triangles[i].push_back(j-1);
+                } else previous = true;
             } else {
                 previous = false;
-            } 
+            }
         }
     }
-    Covered covered(m-1, 0); // which leg is covered #times
-    int uncovered = m-1; // nr of uncovered elements
-    int best_nr = n; // how many map parts do we need?
-    int ind_b = 0, ind_e = 0;
-    while(ind_b < n){
-        // ensure covering
-        while(uncovered && ind_e < n){
-            for(CCI j = triangles[ind_e].begin(); j!= triangles[ind_e].end(); j++){
-                covered[*j]++;
-                if(covered[*j] == 1) uncovered--; //first time covered, we can removce it fom uncovered counter
+    vector<int> covered(m-1, 0);
+    int uncovered = m-1;
+    int best_nr = n;
+    int l = 0, r = 0;
+    while(l < n){
+        while(uncovered && r < n){ // ensure covering property
+            for(auto it = triangles[r].begin(); it!= triangles[r].end(); ++it){
+                covered[*it]++;
+                if(covered[*it]==1) uncovered--;
             }
-            ind_e++;
+            r++;
         }
-        if(uncovered != 0) break; // covering property broken, stop
-        // can we remove triangle b ?
-        do{
-            for(CCI j = triangles[ind_b].begin(); j != triangles[ind_b].end(); j++){
-                covered[*j]--;
-                if(covered[*j] == 0) uncovered++; // uncovered property broken
+        if(uncovered != 0) break; // coverty property broken
+        do{ // can we remove triangle?
+            for(auto it = triangles[l].begin(); it!= triangles[l].end(); ++it){
+                covered[*it]--;
+                if(covered[*it]==0) uncovered++;
             }
-        } while (++ind_b != ind_e && uncovered == 0);
-        best_nr = min(best_nr, ind_e - ind_b + 1);
+        } while( ++l != r && uncovered == 0);
+        best_nr = min(best_nr, r-l+1);
     }
     cout << best_nr << "\n";
 }

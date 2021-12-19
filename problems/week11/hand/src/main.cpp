@@ -20,35 +20,35 @@ typedef std::vector<Edge> EdgeV;
 using namespace std;
 
 int question_2(const EdgeV &edges, const long s, const int k, const int n){
-    vector<int> component_size(n,1);
-      // setup and initialize union-find data structure
     boost::disjoint_sets_with_storage<> uf(n);
     Index n_components = n;
+    vector<int> components(n,1);
     // ... and process edges in order of increasing length
     for (EdgeV::const_iterator e = edges.begin(); e != edges.end(); ++e) {
         // determine components of endpoints
         Index c1 = uf.find_set(std::get<0>(*e));
         Index c2 = uf.find_set(std::get<1>(*e));
-        if (get<2>(*e) >= s) break; // early termination
+        if(get<2>(*e)>=s) break;
         if (c1 != c2) {
             // this edge connects two different components => part of the emst
             uf.link(c1, c2);
             Index parent = uf.find_set(c1);
-            component_size[parent] = component_size[c1] + component_size[c2];
-            (parent == c1 ) ? component_size[c2] = 0 : component_size[c1] = 0;
+            components[parent] = components[c1]+components[c2];
+            parent == c1 ? components[c2] = 0 : components[c1] = 0; 
             if (--n_components == 1) break;
         }
     }
-    sort(component_size.begin(), component_size.end(), greater<int>());
-    int largest_idx = 0, smallest_idx = n_components-1, confirmed_families = 0;
-    while(largest_idx<=smallest_idx){
-        if(component_size[largest_idx]>=k){
-            confirmed_families++;
-            largest_idx++;
-        } else{
-            component_size[largest_idx] += component_size[smallest_idx--];
+    sort(components.begin(), components.end(), greater<int>());
+    int l = 0, r = components.size()-1, families = 0;
+    while(l <= r){
+        if(components[l] >= k){
+            families++;
+            l++;
+        } else {
+            components[l] += components[r--];
         }
-    } return confirmed_families;
+    }
+    return families;
 }
 
 void run(){

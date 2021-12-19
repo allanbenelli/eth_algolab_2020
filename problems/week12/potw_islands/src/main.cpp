@@ -7,44 +7,56 @@ using namespace std;
 
 void run(){
     int n, k, w; cin >> n >> k >> w;
-    vector<int> c(n);
-    for(int i = 0; i < n; ++i) cin >> c[i];
-    vector<int> length(n);
     vector<vector<int>> ways(w);
+    vector<int> str; str.reserve(n);
+    for(int i = 0; i < n; ++i){
+        int c; cin >> c;
+        str.push_back(c);
+    }
+    vector<int> length(w);
     for(int i = 0; i < w; ++i){
-        cin >> length[i];
-        ways[i].resize(length[i]);
-        for(int j = 0; j < length[i]; ++j){
+        int l; cin >> l;
+        length[i] = l;
+        ways[i].reserve(l);
+        for(int j = 0; j < l; ++j){
             cin >> ways[i][j];
         }
     }
-
     int best = 0;
-
-    for(int i = 0; i < w; ++i){ // single waterway
-        int a = 0, b = 0;
-        int sum = c[0];
-        while (a < length[i] && b < length[i]){
-            if( sum == k) best = max(best, b - a + 1);
-            if( sum >= k || b == length[i] - 1) sum -= c[ways[i][a++]];
-            else sum += c[ways[i][++b]];
+    for(int i = 0; i < w; ++i){
+        int l = 0, r = 0;
+        int sum = str[0];
+        while(r < length[i]){
+            if(sum == k) best = max(best, r-l+1);
+            if(sum >= k) {
+                sum -= str[ways[i][l++]];
+                if(l>r){
+                    r = l;
+                    if( r < length[i]) sum = str[ways[i][r]];
+                }
+            } else {
+                if(++r < length[i]){
+                    sum+= str[ways[i][r]];
+                } else break;
+            }
         }
     }
-    map<int,int> sumToDistance;
+
+    map<int,int> sumMap;
     for(int i = 0; i < w; ++i){
         vector<int> sums;
         sums.push_back(0);
         for(int j = 1; j < length[i]; ++j){
-            int sum = sums[j-1] + c[ways[i][j]];
-            if (sum + c[0] >= k) break;
+            int sum = sums[j-1] + str[ways[i][j]];
+            if(sum+str[0]>= k) break;
             sums.push_back(sum);
 
-            int diff = k -(sum+c[0]);
-            auto other = sumToDistance.find(diff);
-            if(other != sumToDistance.end()) best = max(best, j + other->second + 1);
+            int diff = k-(sum+str[0]);
+            auto t = sumMap.find(diff);
+            if(t!=sumMap.end()) best = max(best, j+t->second+1);
         }
-        for(int j = 1; j < sums.size(); ++j){
-            sumToDistance[sums[j]] = max(j, sumToDistance[sums[j]]);
+        for(int j = 0; j < sums.size(); ++j){
+            sumMap[sums[j]] = max(j, sumMap[sums[j]]);
         }
     }
     cout << best << "\n";

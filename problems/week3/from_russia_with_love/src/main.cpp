@@ -7,28 +7,26 @@ typedef vector<int> VI;
 typedef vector<VI> VVI;
 
 int max_pos_win( int i, int j, int n, int m, const VI& coins, VVI& dp){
-    if ( j < i) return 0;
-    if (j-i <1) return dp[i][j] = 0;
-    if (dp[i][j] != -1) return dp[i][j];
 
-    int win_left = INT_MAX, win_right = INT_MAX;
-    for (int l = 0; l < m; l++){
-        win_left = min(win_left, max_pos_win(i + l + 1, j - (m - l - 1), n, m, coins, dp));
-        win_right = min(win_right, max_pos_win(i + l, j - (m - l), n, m, coins, dp));
+    if(j < i) return 0;
+    if(j-i < 1) return dp[i][j] = 0;
+    if(dp[i][j] != -1) return dp[i][j];
+    int win_l = INT32_MAX, win_r = INT32_MAX;
+    for(int l = 0; l < m; l++){
+        win_l = min(win_l, max_pos_win(i+l+1, j-(m-l-1), n, m, coins, dp));
+        win_r = min(win_r, max_pos_win(i+l, j-(m-l), n, m, coins, dp));
     }
-    dp[i][j] = max(coins[i] + win_left, coins[j-1] + win_right);
+    dp[i][j] = max(coins[i]+win_l, coins[j-1]+win_r);
     return dp[i][j];
-    
 }
 
 void testcase(){
     int n, m, k;
     cin >> n >> m >> k;
-    VI coins;
+    VI coins(n);
 
     for(int i = 0; i< n; i++){
-        int c; cin >> c;
-        coins.push_back(c);
+        cin >> coins[i];
     }
     VVI dp(n+1, VI(n+1, -1));
 
@@ -41,7 +39,5 @@ void testcase(){
 int main(){
     ios_base::sync_with_stdio(false);
     int t; cin >> t;
-    for(int i = 0; i < t; i++){
-        testcase();
-    }
+    while(t--) testcase();
 }

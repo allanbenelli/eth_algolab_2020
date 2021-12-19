@@ -1,66 +1,124 @@
+
 #include <iostream>
 #include <vector>
 #include <algorithm>
 
-using namespace std;
-typedef vector<pair<long,long>> VPLL;
-typedef vector<long> VL;
+struct Movement{
+  long dist;
+  long t;
+  
+  bool operator<(const Movement& other) const{
+    return t < other.t;
+  }
+};
 
-bool mySort(pair<long,long> &p1, pair<long,long> &p2){
-    return p1.second < p2.second;
+int n, m;
+long D, T;
+
+std::vector<Movement> moves;
+std::vector<long> magicPotion;
+
+void dfs(const int idx, const int end, const int gulps, const long traveled_dist, const long elapsed_t, std::vector<Movement> & half){
+  
+  if(elapsed_t >= T){
+    return;
+  }
+  
+  if(idx == end){
+    if(traveled_dist > 0){
+      half.push_back({traveled_dist, elapsed_t});
+    }
+    return;
+  }
+  
+  // use the move
+  dfs(idx + 1, end, gulps, traveled_dist + moves[idx].dist + magicPotion[gulps], elapsed_t + moves[idx].t, half);
+  // do not use the move
+  dfs(idx + 1, end, gulps, traveled_dist, elapsed_t, half);
+  
 }
 
-void recursive(const int move, const int moves_used, const long remaining_d, const long remaining_t, const VPLL &moves, VL & best_wo_potions){
-    if(move >= moves.size() || remaining_t <= moves[move].second){
-        best_wo_potions[moves_used] = min(best_wo_potions[moves_used], remaining_d);
-        return;
-    }
-    recursive(move+1, moves_used, remaining_d, remaining_t, moves, best_wo_potions);
-    recursive(move+1, moves_used+1, remaining_d - moves[move].first , remaining_t-moves[move].second, moves, best_wo_potions);
+bool isPossible(int gulps){
+  // split
+  std::vector<Movement> first_half;
+  std::vector<Movement> second_half;
+  
+  // fill the lists
+  dfs(0, n/2, gulps, 0, 0, first_half);
+  dfs(n/2, n, gulps, 0, 0, second_half);
+  
+  // until the certain time, summarize the maximum distance
+    // sort
+  std::sort(first_half.begin(), first_half.end());
+  std::sort(second_half.begin(), second_half.end());
+    
+    // replace values to the maximum distance
+  for(int i=1; i<first_half.size(); ++i){
+    first_half[i].dist = std::max(first_half[i].dist, first_half[i-1].dist);
+  }
+  for(int i=1; i<second_half.size(); ++i){
+    second_half[i].dist = std::max(second_half[i].dist, second_half[i-1].dist);
+  }
+  
+  // quick check before merging
+  if(first_half.back().dist >= D || second_half.back().dist >= D)
+    return true;
+  
+  // merge two lists
+  int idx = second_half.size()-1;
+  for(auto m : first_half){
+    
+    while(second_half[idx].t + m.t >= T)
+      idx--;
+    
+    if(second_half[idx].dist + m.dist >= D)
+      return true;
+  }
+  
+  return false;
 }
 
-void run(){
-    int n, m; long D, T; cin >> n >> m >> D >> T;
-    VPLL moves; moves.reserve(n);
-    vector<long> gulps; gulps.reserve(m);
+void testcase()
+{
+  // int n, m; long D, T;
+  std::cin >> n >> m >> D >> T;
 
-    for(int i = 0; i < n ; ++i){
-        long d,t; cin >> d >> t;
-        moves.push_back({d,t});
-    }
-    for(int i = 0; i < m; ++i){
-        long s; cin >> s;
-        gulps.push_back(s);
-    }
+  moves.resize(n);
+  for(int i=0; i<n; ++i){
+    long d, t; std::cin >> d >> t;
+    moves[i] = {d, t};
+  }
 
-    sort(moves.begin(), moves.end(), mySort);
-    if(moves[0].second > T) cout << "Panoramix captured\n";
+  magicPotion.resize(m+1);
+  for(int i=1; i<=m; i++){
+    std::cin >> magicPotion[i];
+  }
+  
+  // binary search
+  int a = 0;
+  int b = m+1;
+  
+  while(a != b){
+    int gulps = (a+b)/2;
+    
+    if(isPossible(gulps)){
+      b = gulps;
+    }
     else{
-        const long long_max = numeric_limits<long>::max();
-        VL best_wo_potions(31, long_max);
-        recursive(0,0, D, T, moves, best_wo_potions);
-        long best = long_max;
-        for(int i = 1; i <= n; ++i){
-            if(best_wo_potions[i] <= 0){
-                cout << "0\n";
-                return;
-            }
-            if(best_wo_potions[i] != long_max){
-                long needed = (best_wo_potions[i]-1)/(i)+1;
-                const auto it = lower_bound(gulps.begin(), gulps.end(), needed);
-                if(it != gulps.end()){
-                    best = min(best, it-gulps.begin()+1);
-                }
-            }
-        }
-        if (best == long_max){
-            cout << "Panoramix captured\n"; 
-        } else cout << best << "\n";
+      a = gulps + 1;
     }
+  }
+  
+  if(a == (m+1)){
+    std::cout << "Panoramix captured" << std::endl;
+  }
+  else{
+    std::cout << a << std::endl;
+  }
 }
 
 int main(){
-    ios_base::sync_with_stdio(false);
-    int t; cin >> t;
-    while(t--) run();
+    std::ios_base::sync_with_stdio(false);
+    int t; std::cin >> t;
+    while(t--) testcase();
 }

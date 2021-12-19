@@ -1,6 +1,6 @@
 # My solutions for 
 
-| Week                  | Problem                         | Points | Solution Description ([adapted from](https://github.com/chaehni/AlgoLab))                                         | Topic            |
+| Week                  | Problem                         | Points | Solution Description ([some are adapted from](https://github.com/chaehni/AlgoLab))                                         | Topic            |
 | --------------------- | ------------------------------- | ------ | ----------------------------------------------------------------------------------------------------------------- | -----------------|
 | intro                 | Basic data types                | 100    | types                                                                                                             | |
 | intro                 | BFS                             | 100    | standard BFS                                                                                                      | |
@@ -77,37 +77,3 @@
 | 13                    | Punch                           | 100    | dynamic programming, 2D table with pairs,                                                                         | DP |
 | 13                    | Marathon                        | 100    | multiple max flow min cost & binary search to find the optimal flow                                               | |
 | PotW 14               | On Her Majesty's Secret Service | 100    | minimum bottleneck matching, minimizing longest edge in bipartite graph                                           | |
-
-# older solutions
-
-| Week                  | Problem                         | Points | Solution                                                                                                          |
-| --------------------- | ------------------------------- | ------ | ----------------------------------------------------------------------------------------------------------------- |
-| PotW 3 (2018)         | Magician and the Coin           | 100    | recursion & memoization                                                                                           |
-| old 3                     | Almost antenna                  | 100    | Min_circle, support points                                                                                        |
-| old 4                     | Building a Graph                | 100    | Kurskal, Dijkstra                                                                                                 |
-| old 4                     | Shortest Paths                  | 100    | Dijkstra                                                                                                          |
-| old 5                     | Ligth at the Museum             | 100    | split & list, brute force all switch configurations                                                               |
-| old 5                     | High School Teams               | 100    | split & list, brute force all combinations with at most k refs, for those brute force all team combinations       |
-| old 5 (2019)              | Planks                          | 100    | Split & List with to bits per plank                                                                               |
-| PotW 6 (2018 & 2019)  | Planet Express                  | 100    | strong components & Dijkstra                                                                                      |
-| old 6                     | Coin Tossing                    | 100    | max flow, making sure claimed scores and flow match number of games                                               |
-| old 6                     | Tetris                          | 100    | max flow with splitting nodes into in- and out-nodes (vertex capacity)                                            |
-| old 6 (2019)              | London                          | 100    | max flow, edges between front/back letter combinations                                                            |
-| 7                     | Portfolios                      | ---    | quadratic programming, minimize over variance matrix                                                              | |
-| PotW 8 (2019)         | Cantonal Courier                | 100    | max flow                                                                                                          |
-| old 8                     | Graypes                         | 100    | Delaunay triangulation, taking shortest edge                                                                      |
-| PotW 9 (2018 & 2019)  | Suez                            | 100    | find constraints/objective and solve with LP                                                                      |
-| old 9                     | Satellites                      | 100    | max cardinality matching in bipartite graph & König algorithm                                                     |
-| old 9                 | Canteen                         | 100    | min cost max flow, days as nodes and edges between days as fridge                                                 |
-| 10                    | New Tiles                       | ---    | Cancer to implement                                                                                               |
-| 10                    | Light the Stage                 | 100    | Delaunay for nearest neighbour & trying out all possible collisions                                               |
-| 10                    | Poker Chips                     | 100    | recursion with insane 5D memoization table                                                                        |
-| 11                    | The Empire Strikes Back         | 100    | Delaunay for finding max radius per shot, then LP for solving for required energy                                 |
-| 11                    | Planks                          | 100    | Split & List with to bits per plank                                                                               |
-| 11 (2019)             | DHL                             | 100    | DP making use of the nature of the cost function                                                                  |
-| 12                    | Ligh Pattern                    | 100    | DP with linear table and two numbers per entry for normal and inverted lights                                     |
-| 12 (2019)             | Asterix and the Roman Lines     | 100    | LP                                                                                                                |
-| 13                    | Bob's Burden                    | 100    | Dijkstra for finding shortest path between 3 vertices & modelling node weight with in- and out-nodes              |
-| 13                    | Corbusier                       | 100    | simple DP with 2D table                                                                                           |
-| 13                    | Cantonal Courier                | 100    | max flow                                                                                                          |
-| 13 (2019)             | Phantom Menace                  | 100    | max flow for finding maximal vertex-disjoint paths                                                                |

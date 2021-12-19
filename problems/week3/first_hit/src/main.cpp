@@ -12,7 +12,7 @@ typedef CGAL::Exact_predicates_exact_constructions_kernel IK;
 typedef IK::Point_2 P;
 typedef IK::Segment_2 S;
 typedef IK::Ray_2 R;
-typedef result_of<IK::Intersect_2(R, S)>::type IT;
+typedef result_of<IK::Intersect_2(R,S)>::type IT;
 
 double floor_to_double(const IK::FT& x){ // given in tutorial
     double a = floor(CGAL::to_double(x));
@@ -21,32 +21,19 @@ double floor_to_double(const IK::FT& x){ // given in tutorial
     return a;
 }
 
-
-void cut_ray(IK::Segment_2& s, const IT& o) {
-    if (const IK::Point_2* p = boost::get<IK::Point_2>(&*o))
-        s = IK::Segment_2(s.source(), *p);
-    else if (const IK::Segment_2* t = boost::get<IK::Segment_2>(&*o))
-        // select endpoint of *t closer to s.source()
-        if (CGAL::collinear_are_ordered_along_line(s.source(), t->source(), t->target()))
-            s = IK::Segment_2(s.source(), t->source());
-        else
-            s = IK::Segment_2(s.source(), t->target());
-    else
-        throw std::runtime_error("Strange␣segment␣intersection.");
-}
-
-void shorten_segment(S& cutted_ray, const IT& cutting_point){
-    if(const P* op = boost::get<P>(&*cutting_point)){
-        cutted_ray = S(cutted_ray.source(), *op);
-    } else if(const S* seg = boost::get<S>(&*cutting_point)){
-        //check if they are overlapping and decide which one to choose
-        if(CGAL::collinear_are_ordered_along_line(cutted_ray.source(), seg->source(), seg->target())){
-            cutted_ray = S(cutted_ray.source(), seg->source());
-        }else{
-            cutted_ray = S(cutted_ray.source(), seg->target());
+void shortenSeg(IK::Segment_2& s, const IT& o){
+    if(const P* op = boost::get<P>(&*o)){
+        s = S(s.source(), *op);
+    } else if (const S* os = boost::get<S>(&*o)){
+        if( CGAL::collinear_are_ordered_along_line(s.source(), os->source(), os->target())){
+            s = S(s.source(), os->source());
+        } else {
+            s = S(s.source(), os->target());
         }
     }
 }
+
+
 
 
 int main(){
@@ -69,21 +56,20 @@ int main(){
         S cutted_ray(ray.source(), ray.point(1)); // initialize
 
         int i = 0;
-        for(;i < n; i++){ // search first intersection
-            if(CGAL::do_intersect(segments[i], ray)){ // take all the ray
-                cut_ray(cutted_ray, CGAL::intersection(segments[i], ray));
+        for(; i < n; ++i){
+            if(CGAL::do_intersect(ray, segments[i])){
+                shortenSeg(cutted_ray, CGAL::intersection(ray, segments[i]));
                 break;
             }
         }
-        if(i == n) {
-            cout << "no" << "\n";
-        } else {
+        if(i == n) cout << "no\n";
+        else{
             while(++i < n){
-                if(CGAL::do_intersect(segments[i], cutted_ray)){ // take cutted one
-                    cut_ray(cutted_ray, CGAL::intersection(segments[i], ray)); // intersection with ray function
+                if(CGAL::do_intersect(cutted_ray, segments[i])){
+                    shortenSeg(cutted_ray, CGAL::intersection(ray,segments[i]));
                 }
             }
-            cout << floor_to_double(cutted_ray.target().x()) << " " << floor_to_double(cutted_ray.target().y()) << "\n";        
+            cout << floor_to_double(cutted_ray.target().x()) << " " << floor_to_double(cutted_ray.target().y()) << "\n";
         }
         cin >> n;
     }

@@ -21,27 +21,21 @@ int main(){
     int n, m; cin >> n >> m;
     while (n != 0 && m != 0)
     {
-        Program lp(CGAL::SMALLER, true, 0, false, 0);
-
+        Program lp (CGAL::SMALLER, true, 0, false, 0);
         for(int i = 0; i < n; ++i){
-            // n nutrients
-            int n_min, n_max; cin >> n_min >> n_max;
-            lp.set_b(i, n_max);
-            lp.set_b(i+n, -n_min);
+            int min_i, max_i; cin >> min_i >> max_i;
+            lp.set_b(i, -min_i);
+            lp.set_b(n+i, max_i);
         }
-
-        for(int j = 0; j < m; ++j){
-            // j = food, #foods = m
-            int cost; cin >> cost;
-            lp.set_c(j, cost);
-            for(int i = 0; i < n; ++i){
-                // amount of nutrient per food
-                int food_n; cin >> food_n;
-                lp.set_a(j, i, food_n);
-                lp.set_a(j, i+n, -food_n);
+        for(int i = 0; i < m; ++i){
+            int c; cin >> c;
+            for(int j = 0; j < n; ++j){
+                int n_j; cin >> n_j;
+                lp.set_a(i, j, -n_j);
+                lp.set_a(i, n+j, n_j);
             }
+            lp.set_c(i, c);
         }
-
         Solution s = CGAL::solve_linear_program(lp, ET());
         if(s.is_infeasible()) cout << "No such diet.\n";
         else cout << floor(CGAL::to_double(s.objective_value())) << "\n";

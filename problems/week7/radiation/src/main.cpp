@@ -24,13 +24,12 @@ void run(){
     int h, t; cin >> h >> t;
     const int total = h+t;
     VVI cells(total, vector<int>(3));
-    //std::array<std::array<std::array<CGAL::Gmpz, 3>, 31>, 50> powers;
-    VVVI powers(total, VVGMPZ(31, vector<CGAL::Gmpz>(3)));
     for(int i = 0; i < total; ++i){
-        cin >> cells[i][0];
-        cin >> cells[i][1];
-        cin >> cells[i][2];
+          cin >> cells[i][0]; 
+          cin >> cells[i][1]; 
+          cin >> cells[i][2]; 
     }
+    vector<vector<vector<CGAL::Gmpz>>> powers(total, vector<vector<CGAL::Gmpz>>(31, vector<CGAL::Gmpz>(3)));
     int sol = -1;
     CGAL::Quadratic_program_options options;
     options.set_pricing_strategy(CGAL::QP_BLAND);
@@ -38,29 +37,29 @@ void run(){
     lp.set_l(0, true, 0);
     lp.set_c(0, -1);
     for(int deg = 0; deg <= 30; deg++){
-        for(int i = 0; i < total; i++){
-            const int coef = (i < h) ? 1 : -1;
+        for(int i = 0; i < total; ++i){
+            const int sign = i < h ? 1 : -1;
             const int x = cells[i][0];
             const int y = cells[i][1];
             const int z = cells[i][2];
-            if(deg==0){
-                powers[i][0][0] = 1;
-                powers[i][0][1] = 1;
-                powers[i][0][2] = 1;
-            } else{
+            if(deg == 0){
+                powers[i][deg][0] = 1;
+                powers[i][deg][1] = 1;
+                powers[i][deg][2] = 1;
+            } else {
                 powers[i][deg][0] = powers[i][deg-1][0] * x;
                 powers[i][deg][1] = powers[i][deg-1][1] * y;
                 powers[i][deg][2] = powers[i][deg-1][2] * z;
             }
-            int param_id = 1;
-            for(int a = 0; a <= deg; a++) {
-                for(int b = 0; b <= deg-a; b++) {
-                    for(int c = 0; c <= deg-b-a; c++) {
-                        lp.set_a(param_id++, i, coef * powers[i][a][0] * powers[i][b][1] * powers[i][c][2]);
+            lp.set_a(0, i, 1);
+            int param = 1;
+            for(int a = 0; a <= deg; a++){
+                for(int b = 0; b <= deg - a; b++){
+                    for(int c = 0; c <= deg - b -a; c++){
+                        lp.set_a(param++, i, sign*powers[i][a][0]*powers[i][b][1]*powers[i][c][2]);
                     }
                 }
             }
-            lp.set_a(0,i,1);
         }
         Solution s = CGAL::solve_linear_program(lp, ET(), options);
         if(s.is_unbounded()){
@@ -68,12 +67,8 @@ void run(){
             break;
         }
     }
-    if(sol == -1){
-        cout << "Impossible!\n";
-    } else{
-        cout << sol << "\n";
-    }
-    
+    if(sol == -1) cout << "Impossible!\n"; 
+    else cout << sol << "\n";
 
 
 }
