@@ -1,4 +1,6 @@
-# My solutions for 
+Note: Here are my solutions that might help other students. I take no responsibility for the completeness of the solutions.
+
+# Solutions for 
 
 | Week                  | Problem                         | Points | Solution Description ([some are adapted from](https://github.com/chaehni/AlgoLab))                                         | Topic            |
 | --------------------- | ------------------------------- | ------ | ----------------------------------------------------------------------------------------------------------------- | -----------------|
